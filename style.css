@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+
+
+.games{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(102, 102, 223);
+    padding: 1em;
+
+}
+
+
+
+#rangeStart, 
+#rangeEnd{
+    width: 20%;
+}
+
+input{
+    width: 90%;
+}
+
+#btn {
+    width: 90%;
+    height: 30px;
+    background: rgb(156, 35, 196);
+    color: antiquewhite;
+    cursor: pointer;
+}

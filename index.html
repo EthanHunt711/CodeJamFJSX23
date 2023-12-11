@@ -3,37 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnbook - Startsida</title>
-    <meta name="description" content="Free web tutorials">
+    <title>Code Jam FJSX2023</title>
+    <meta name="description" content="This page solves the Code Jam supplement required for the front end course">
+    <meta name="author" content="Ali Esmaeeli">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Welcome to Arnbook</h1>
-    <strong>Hej</strong>
-
-    <h2>About Us</h2>
-    <p>vv</p>
-
-    <h3>Arnar</h3>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, ut temporibus! Autem iure, ut cumque mollitia minus harum sed animi magni totam, dolore deserunt sequi excepturi soluta error veritatis molestiae!
     
-    <h4>recept på patsa tomat sås</h4>
+    <h1>Code Jam Sessions</h1>
+    <div class="mainGame">
+        <div class="gamePages">
+            <div class="games">
+                <div class="game1">
+                    <h2>Number Guessing Game</h2>
+                    <h3>Choose Your Range: </h3>
+                    <h4>Between &nbsp;&nbsp;<label for="rangeStart"></label><input type="number" id="rangeStart" name="rangeStart" placeholder="1"> &nbsp;&nbsp;and&nbsp;&nbsp; <label for="rangeEnd"></label><input type="number" id="rangeEnd" name="rangeEnd" placeholder="100">&nbsp;&nbsp;<button id="setBtn" type="button">Set</button></h4>
+                    <h5 id="errorRange"></h5>
+                    <h3 id="numberDescription"></h3>
+                    <label for="guess"></label>
+                    <input type="number" id="guess" name="guess"><br><br>
+                    <button id="btn" type="button">Guess!</button>
+                    <div class="previousGuesses">
+                        <h3>Your Previous Guesses</h3>
+                        <ul class="previousGuessesList">
 
-    <em>inköptslista</em>
+                        </ul>
+                    </div>
+                </div>
+                <div class="game2">
+                    
+                </div>
+                <div class="game3">
+                    
+                </div>
+                <div class="game4">
+                    
+                </div>
+                <div class="game5">
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
     
-    <ul>
-        <li>tomat</li>
-        <img src="https://img.etimg.com/thumb/width-640,height-480,imgsize-56196,resizemode-75,msid-95423731/magazines/panache/5-reasons-why-tomatoes-should-be-your-favourite-fruit-this-year/tomatoes-canva.jpg" alt="hackade">
-        <li>patsa</li>
-        <li>vatten</li>
 
-    </ul>
-    
-    <b>instruktioner</b>
-    <ol>
-        <li>koka upp <br>vattnet</li>
-        <li>gör resten</li>
-    </ol>
 
-    <a href="https://google.com" target="_blank">klicka här för att kunna öppna google</a>
+    <script src="./main.js"></script>
 </body>
 </html>

@@ -1,5 +1,12 @@
+let startRange = document.getElementById('rangeStart');
+let endRange = document.getElementById('rangeEnd');
+let userGuess = document.getElementById('guess');
+
+let userGuessValue;
 let hiddenValue = 0;
 let counter = 0;
+
+let attempts = [];
 
 const rangeList = [0, 0];
 
@@ -10,91 +17,86 @@ function randomNumber(max, min){
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-//function for calculating the guess against the hidden number and outputing a message
-function makeValuation(val, guessedNumber, message){
-    if (guessedNumber < val){
-        message.textContent = `Try a higher guess than ${guessedNumber}!`
-    } else if (guessedNumber > val){
-        message.textContent = `Try a lower guess than ${guessedNumber}!`
-    } else {
-        message.textContent = `Bull's eye, your ${guessedNumber} is actually the right guess`
-    }
-};
 
-//function for disabling further changes to innerHTML
-function disableChange(elementId){
-    document.querySelector(`'#${elementId}'`).disabled = true;
-};
-
-//function for sabling further changes to innerHTML
-function disableChange(elementId){
-    document.querySelector(`'#${elementId}'`).disabled = true;
-};
-
-
-//function for getting the range
-function getRange(){
-    
-
-    //get the start of range
-    const startR = document.getElementById('rangeStart');
-    startR.addEventListener('input', event =>{
-            if(startR != ""){
-                rangeList[0] = Number(startR.value);}
-            else{
-                document.querySelector('#errorRange').innerHTML = "You have to enter a number"
-            }
-        });
-
-    //get the end of range
-    const endR = document.getElementById('rangeEnd');
-    endR.addEventListener('input', event =>{
-            if (endR != ""){
-                rangeList[1] = Number(endR.value);}
-            else{
-                document.querySelector('#errorRange').innerHTML = "You have to enter a number"
-            }
-        });
-
-    return rangeList
-};
-
-//making the guess game
 function guessGame(){
-   
-        const selectedRange = getRange()
-        hiddenValue = randomNumber(selectedRange[0], selectedRange[1])
-        // console.log(hiddenValue);
-        if (hiddenValue > 0){
-            document.querySelector('#numberDescription').innerHTML = `Please enter a guess between ${selectedRange[0]} and ${selectedRange[1]}`;
-            
+    startRange.addEventListener('input', event =>{
+        rangeList[0] = startRange.value;
+        
+    });
+
+    endRange.addEventListener('input', event =>{
+        rangeList[1] = endRange.value;
+       
+    });
+    document.querySelector('#setBtn').addEventListener('click', event => {
+        startRange.disabled = true;
+        endRange.disabled = true;
+
+        hiddenValue = randomNumber(rangeList[0], rangeList[1]);
+        document.getElementById('setBtn').disabled = true;
+        document.getElementById('numberDescription').innerHTML = `Please select a number between ${rangeList[0]} and ${rangeList[1]}`
+        
+    });
+
+    userGuess.addEventListener('input', event => {
+        userGuessValue = userGuess.value;
+        attempts.push(userGuessValue);
+    });
+
+    document.querySelector('#btn').addEventListener('click', event => {
+        counter += 1;
+
+        if (userGuessValue > rangeList[0] && userGuessValue < rangeList[1]){
+            if (userGuessValue == hiddenValue){
+                document.getElementById('rightInput').innerHTML = `Bull's Eye!!! ${userGuessValue} is the correct guess`;
+            } else if(userGuessValue > hiddenValue){
+                document.getElementById('errorInput').innerHTML = `Sorry!!! ${userGuessValue} is higher than the secret number`;
+            } else {
+                document.getElementById('errorInput').innerHTML = `Sorry!!! ${userGuessValue} is lower than the secret number`;
+            };
+            console.log(counter);
+            console.log(attempts[counter]);
+            const lastAttempt = document.createElement('li');
+            lastAttempt.textContent = `Attempt ${counter} was ${attempts[counter]}`;
+            document.querySelector('.previousGuessesList').appendChild(lastAttempt);
         } else {
-            document.querySelector('#numberDescription').innerHTML = 'You have to select a range'
-        }
+            document.getElementById('errorInput').innerHTML = `Sorry!!! ${userGuessValue} is out of bounds`;
+            const lastAttempt = document.createElement('li');
+            lastAttempt.textContent = `Attempt ${counter} was out of bounds`;
+            document.querySelector('.previousGuessesList').appendChild(lastAttempt);
+        };
+        
+    });
+
         
     
-};
-
-
-
-function getStarted(){
-    document.querySelector('#setBtn').addEventListener('click', function(){
-        guessGame()
-
-    });
-    const userGuessInput = document.querySelector('#guess');
-    const userGuess = document.querySelector('#guess').value
-    userGuessInput.addEventListener('input', function(){
-            if (userGuess < hiddenValue){
-                document.querySelector('#errorRange').innerHTML = "Try a higher number"
-            } else if (userGuess > hiddenValue){
-                document.querySelector('#errorRange').innerHTML = "Try a lower number"
-            } else {
-                document.querySelector('#errorRange').innerHTML = "BINGO!!!!"
-            }
-        });
     
 };
 
 
-getStarted()
+
+guessGame()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

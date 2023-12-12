@@ -23,6 +23,10 @@ function randomNumber(max, min){
 
 //main function for playing the game
 function guessGame(){
+
+    // disable the guess button before choosing the range
+    userGuess.disabled = true;
+    document.querySelector('#btn').disabled = true;
     //listen for getting the start of the range (inclusive)
     startRange.addEventListener('input', event =>{
         rangeList[0] = Number(startRange.value);
@@ -36,6 +40,8 @@ function guessGame(){
     document.querySelector('#setBtn').addEventListener('click', event => {
         startRange.disabled = true;
         endRange.disabled = true;
+        userGuess.disabled = false;
+        document.querySelector('#btn').disabled = false;
         
         // get the secret number
         hiddenValue = randomNumber(rangeList[0], rangeList[1]);

@@ -24,7 +24,7 @@ function randomNumber(max, min){
 //main function for playing the game
 function guessGame(){
 
-    // disable the guess button before choosing the range
+    // disable the guess input and button before choosing the range
     userGuess.disabled = true;
     document.querySelector('#btn').disabled = true;
     //listen for getting the start of the range (inclusive)
@@ -38,8 +38,11 @@ function guessGame(){
     });
     //set the range and lock further changes to the range
     document.querySelector('#setBtn').addEventListener('click', event => {
+        //disable the range selection input and button
         startRange.disabled = true;
         endRange.disabled = true;
+        
+        //enabling the guess input and button
         userGuess.disabled = false;
         document.querySelector('#btn').disabled = false;
         

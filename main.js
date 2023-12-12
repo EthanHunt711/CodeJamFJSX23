@@ -114,8 +114,7 @@ function playGame(functionToRun, limit, attemptsList){
         //check for the limit
         if (attemptsList.length <= limit){
             functionToRun
-            console.log('not yet')
-            console.log(attemptsList.length)
+            
         // if limit is surpassed
         } else {
             const failMessage = document.createElement('div');
@@ -133,7 +132,7 @@ function playGame(functionToRun, limit, attemptsList){
 
 
 
-playGame(guessGame(), 5, attempts);
+playGame(guessGame(), 7, attempts);
 
 
 
